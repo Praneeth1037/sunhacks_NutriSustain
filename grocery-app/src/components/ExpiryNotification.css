@@ -1,0 +1,222 @@
+.expiry-notification {
+  width: 100%;
+  box-sizing: border-box;
+  background: #000000;
+  border-radius: var(--radius-2xl);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  font-family: var(--font-family-primary);
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #e5e5e5;
+}
+
+.expiry-notification::before {
+  content: '•';
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 24px;
+  opacity: 0.3;
+  color: #ffffff;
+  animation: shake 2s ease-in-out infinite;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+.expiry-notification.visible {
+  transform: translateX(0);
+}
+
+.expiry-notification.hidden {
+  transform: translateX(100%);
+}
+
+.notification-content {
+  padding: 20px;
+  color: white;
+}
+
+.notification-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.notification-icon {
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.notification-title {
+  flex: 1;
+}
+
+.notification-title h4 {
+  margin: 0 0 4px 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.notification-title p {
+  margin: 0;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
+  flex-shrink: 0;
+}
+
+.close-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.expiring-items-list {
+  margin-bottom: 16px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.expiring-item {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 8px;
+  backdrop-filter: blur(10px);
+}
+
+.expiring-item:last-child {
+  margin-bottom: 0;
+}
+
+.item-details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.product-name {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.expiry-info {
+  font-size: 12px;
+  opacity: 0.9;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.days-left {
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 11px;
+}
+
+.days-left.urgent {
+  background: rgba(255, 255, 255, 0.3);
+  color: #fff;
+}
+
+.days-left.warning {
+  background: rgba(255, 193, 7, 0.3);
+  color: #fff;
+}
+
+.days-left.normal {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+.notification-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.view-list-btn,
+.dismiss-btn {
+  flex: 1;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.view-list-btn {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.view-list-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.dismiss-btn {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dismiss-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Custom scrollbar for expiring items list */
+.expiring-items-list::-webkit-scrollbar {
+  width: 4px;
+}
+
+.expiring-items-list::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+}
+
+.expiring-items-list::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
+}
+
+.expiring-items-list::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .expiry-notification {
+    width: 100%;
+  }
+  
+  .notification-content {
+    padding: 16px;
+  }
+  
+  .notification-actions {
+    flex-direction: column;
+  }
+}
